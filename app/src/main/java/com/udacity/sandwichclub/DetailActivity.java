@@ -63,8 +63,8 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI() {
         TextView alsoKnownAsTextView = (TextView) findViewById(R.id.also_known_tv);
         List<String> getAlsoKnownAs = sandwich.getAlsoKnownAs();
-        for(String singleNameAlias : getAlsoKnownAs) {
-            alsoKnownAsTextView.append(singleNameAlias + "\n");
+        for(String name : getAlsoKnownAs) {
+            alsoKnownAsTextView.setText(name + "\n");
         }
 
         TextView placeOfOrigin = (TextView) findViewById(R.id.origin_tv);
@@ -78,7 +78,5 @@ public class DetailActivity extends AppCompatActivity {
         for(String ingredient : ingredients) {
             ingredientTextView.setText(ingredient + '\n');
         }
-
-
     }
 }

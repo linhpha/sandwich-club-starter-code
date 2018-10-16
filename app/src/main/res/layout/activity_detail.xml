@@ -26,29 +26,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_place_of_origin_label"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 />
 
             <TextView
                 android:id="@+id/origin_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_also_known_as_label"
-                android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/also_known_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"
                 />
 
 
@@ -57,14 +63,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detail_ingredients_label"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textSize="20sp"
                 />
 
             <TextView
                 android:id="@+id/ingredients_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"
                 />
 
             <TextView
@@ -72,21 +81,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detail_description_label"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textSize="20sp"
                 />
 
             <TextView
                 android:id="@+id/description_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"
                 />
-
-
-
-
-
-
 
         </LinearLayout>
 

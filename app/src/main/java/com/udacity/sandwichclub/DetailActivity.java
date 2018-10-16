@@ -17,8 +17,14 @@ import java.util.List;
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
+    private static final String NO_DATA_TEXT = "No data found";
     private static final int DEFAULT_POSITION = -1;
     private static Sandwich sandwich;
+    public static TextView alsoKnownAsTextView;
+    public static TextView placeOfOrigin;
+    public static TextView description;
+    public static TextView ingredientTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,7 @@ public class DetailActivity extends AppCompatActivity {
         populateUI();
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .error(R.drawable.sandwich_placeholder)
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
@@ -61,22 +68,39 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI() {
-        TextView alsoKnownAsTextView = (TextView) findViewById(R.id.also_known_tv);
+        alsoKnownAsTextView = findViewById(R.id.also_known_tv);
+        placeOfOrigin = findViewById(R.id.origin_tv);
+        description = findViewById(R.id.description_tv);
+        ingredientTextView = findViewById(R.id.ingredients_tv);
+
         List<String> getAlsoKnownAs = sandwich.getAlsoKnownAs();
-        for(String name : getAlsoKnownAs) {
-            alsoKnownAsTextView.setText(name + "\n");
+        if (getAlsoKnownAs != null || getAlsoKnownAs.size() > 0) {
+            for (String name : getAlsoKnownAs) {
+                alsoKnownAsTextView.setText(name + "\n");
+            }
+        } else {
+            alsoKnownAsTextView.setText(NO_DATA_TEXT);
         }
 
-        TextView placeOfOrigin = (TextView) findViewById(R.id.origin_tv);
-        placeOfOrigin.setText(sandwich.getPlaceOfOrigin());
+        if (sandwich.getPlaceOfOrigin() != null || !sandwich.getPlaceOfOrigin().equals("")) {
+            placeOfOrigin.setText(sandwich.getPlaceOfOrigin());
+        } else {
+            placeOfOrigin.setText(NO_DATA_TEXT);
+        }
 
-        TextView description = (TextView) findViewById(R.id.description_tv);
-        description.setText(sandwich.getDescription());
+        if (sandwich.getDescription() != null || !sandwich.getDescription().equals("")) {
+            description.setText(sandwich.getDescription());
+        } else {
+            description.setText(NO_DATA_TEXT);
+        }
 
-        TextView ingredientTextView = (TextView) findViewById(R.id.ingredients_tv);
         List<String> ingredients = sandwich.getIngredients();
-        for(String ingredient : ingredients) {
-            ingredientTextView.setText(ingredient + '\n');
+        if (ingredients != null || ingredients.size() > 0) {
+            for (String ingredient : ingredients) {
+                ingredientTextView.setText(ingredient + '\n');
+            }
+        } else {
+            ingredientTextView.setText(NO_DATA_TEXT);
         }
     }
 }

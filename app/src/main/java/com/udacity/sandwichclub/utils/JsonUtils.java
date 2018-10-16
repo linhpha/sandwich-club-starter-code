@@ -13,23 +13,32 @@ import java.util.List;
 
 public class JsonUtils {
 
+    public static final String KEY_MAIN_NAME = "mainName";
+    public static final String KEY_ALSO_KNOW_AS = "alsoKnownAs";
+    public static final String KEY_PLACE_OF_ORIGIN = "placeOfOrigin";
+    public static final String KEY_DESCRIPTION = "description";
+    public static final String KEY_INGREDIENTS = "ingredients";
+    public static final String KEY_IMAGE = "image";
+    public static final String KEY_NAME = "name";
+
+
+
     public static Sandwich parseSandwichJson(String json) {
 
         try {
+            JSONObject sandwichObject = new JSONObject(json);
+            JSONObject nameObject = sandwichObject.getJSONObject(KEY_NAME);
 
-            JSONObject mainObject = new JSONObject(json);
-            JSONObject uniObject = mainObject.getJSONObject("name");
-
-            String dishName = uniObject.getString("mainName");
-            JSONArray alsoKnownAs = uniObject.getJSONArray("alsoKnownAs");
+            String dishName = nameObject.getString(KEY_MAIN_NAME);
+            JSONArray alsoKnownAs = nameObject.getJSONArray(KEY_ALSO_KNOW_AS);
             List<String> alsoKnownAsList = new ArrayList<>();
             for (int i = 0; i < alsoKnownAs.length(); i++) {
                 alsoKnownAsList.add(alsoKnownAs.getString(i));
             }
-            String placeOfOrigin = mainObject.getString("placeOfOrigin");
-            String description = mainObject.getString("description");
-            String imageUrl = mainObject.getString("image");
-            JSONArray ingredients = mainObject.getJSONArray("ingredients");
+            String placeOfOrigin = sandwichObject.getString(KEY_PLACE_OF_ORIGIN);
+            String description = sandwichObject.getString(KEY_DESCRIPTION);
+            String imageUrl = sandwichObject.getString(KEY_IMAGE);
+            JSONArray ingredients = sandwichObject.getJSONArray(KEY_INGREDIENTS);
             List<String> ingredientList = new ArrayList<String>();
             for (int i = 0; i < ingredients.length(); i++) {
                 ingredientList.add(ingredients.getString(i));
